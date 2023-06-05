@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="description" placeholder="Description" />
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="col-sm-2 mt-2">
+            <button class="btn btn-warning">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <h5 class="text-success">Active</h5>
+        <div id="active"></div>
+        <h5 class="text-danger mt-5">Completed</h5>
+        <div id="completed"></div>
+    </div>
+
+    <!-- <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody id="tasks"></tbody>
+      </table> -->
+</div>
+
+
+<script>
+
+    function showTasksInLists() {
+        document.getElementById("active")!.innerHTML = "";
+        document.getElementById("completed")!.innerHTML = "";
+        for (let task of manager.tasks) {
+            if (task.completed == false) {
+                document.getElementById("active")!.innerHTML += `
+     <div> <li class="list-group-item d-inline-block w-50">${task.description}</li> <span> <button class="btn btn-success" onclick="completeTask(${task.id})"><i class="fa-solid fa-check"></i></button> <button class="btn btn-primary" onclick="updateDescription(${task.id})"><i class="fa-solid fa-pen"></i></button> <button class="btn btn-danger" onclick="deleteTask(${task.id})"><i class="fa-solid fa-trash"></i></button></span> </div> `;
+            } else {
+                document.getElementById("completed")!.innerHTML += `
+      <div> <li class="list-group-item d-inline-block w-50 text-decoration-line-through">${task.description}</li> <span> <button class="btn btn-success" disabled><i class="fa-solid fa-check-double"></i></button> <button class="btn btn-primary" disabled><i class="fa-solid fa-pen"></i></button> <button class="btn btn-danger" disabled><i class="fa-solid fa-trash"></i></button></span> </div> `;
+            }
+        }
+    }
+
+    showTasksInLists();
+
+    function completeTask(id: number) {
+        manager.completeTask(id);
+        showTasksInLists();
+    }
+
+</script>
