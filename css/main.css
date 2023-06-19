@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #212529;
+}
+
+.bg_rgba {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("../images/man-593333_1280.jpg") center center no-repeat;
+  width: 100vw;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.main-wrapper {
+  overflow-x: hidden;
+}
+
+label span {
+  margin-left: 10px;
+  color: green;
+}
+
+.container {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
